@@ -68,3 +68,28 @@ class ResidencDimens(models.Model):
         return self.local
 
 
+
+class CableCalculator(models.Model):
+    tesion = models.ForeignKey(Tensao, verbose_name='Tensão (VA)', blank=True, on_delete=models.CASCADE)
+    sessao_condutor = models.ForeignKey(TabelaCondutor, verbose_name='Sessão Transversal do Condutor (mm²)', blank=True, on_delete=models.CASCADE)
+    corrente_nominal = models.ForeignKey(Disjuntor, verbose_name='Corrente Nominal', on_delete=models.CASCADE)
+    numero_polos = models.DecimalField(verbose_name='Número de Polos', max_digits=4, decimal_places=0, blank=True)
+    numero_polos = models.DecimalField(verbose_name='Número de Polos', max_digits=4, decimal_places=0, blank=True)
+    capacidade_corrente = models.CharField(verbose_name='Capacidade de Corrente', max_length=3, blank=True)
+    
+    def __str__(self):
+        return self.tesion
+
+
+'''        
+class CableCalculator(models.Model):
+    tesion = models.ForeignKey(Tensao, verbose_name='Tensão (VA)', blank=True, on_delete=models.CASCADE)
+    sessao_condutor = models.ForeignKey(TabelaCondutor, verbose_name='Sessão Transversal do Condutor (mm²)', blank=True, on_delete=models.CASCADE)
+    corrente_nominal = models.ForeignKey(Disjuntor, verbose_name='Corrente Nominal', on_delete=models.CASCADE)
+    numero_polos = models.DecimalField(verbose_name='Número de Polos', max_digits=4, decimal_places=0, blank=True)
+    numero_polos = models.DecimalField(verbose_name='Número de Polos', max_digits=4, decimal_places=0, blank=True)
+    capacidade_corrente = models.CharField(verbose_name='Capacidade de Corrente', max_length=3, blank=True)
+    
+    def __str__(self):
+        return self.tesion
+'''
