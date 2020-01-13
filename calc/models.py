@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 
-
 class IsolatioType(models.Model):
     type_isolation = models.CharField(verbose_name='Tipo de Isolação', max_length=3)
 
@@ -21,10 +20,12 @@ class CableCalculator(models.Model):
     instalation = models.ForeignKey(InstalatioType, verbose_name='Tipo de Instalação', blank=True, on_delete=models.CASCADE)
     isolation = models.ForeignKey(IsolatioType, verbose_name='Tipo de Isolação', blank=True, on_delete=models.CASCADE)
     number_polos = models.DecimalField(verbose_name='Número de Polos', max_digits=4, decimal_places=0, blank=True)
-    corrente_ckt = models.DecimalField(verbose_name='Número de Polos', max_digits=4, decimal_places=0, blank=True)
+    corrente_ckt = models.DecimalField(verbose_name='Corrente Total', max_digits=4, decimal_places=0, blank=True)
 
     def __str__(self):
         return self.instalation
+
+
 
 
 

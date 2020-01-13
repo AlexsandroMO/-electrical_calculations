@@ -361,6 +361,63 @@ table th{
     background-color: #808080;
 }
 
+#li-item{
+    padding: 10px;
+
+}
+
+#input-item{
+    position: absolute;
+    left: 200px;
+}
+
+/* 
+#id_instalation{
+    width: 15%;
+    position: absolute;
+    left: 200px;
+}
+#id_isolation{
+    width: 15%;
+    position: absolute;
+    left: 200px;
+}
+#id_number_polos{
+    width: 15%;
+    position: absolute;
+    left: 200px;
+}
+#id_corrente_ckt{
+    width: 15%;
+    position: absolute;
+    left: 200px;
+} */
+
+
+
+#div_id_instalation{
+    position: relative;
+    left: 20px;
+    float: right;
+}
+#div_id_isolation{
+    position: relative;
+    left: 20px;
+    float: right;
+}
+#div_id_number_polos{
+    position: relative;
+    left: 20px;
+    float: right;
+}
+#div_id_corrente_ckt{
+    position: relative;
+    left: 20px;
+    float: right;
+}
+
+
+
 /* 
 ::-webkit-scrollbar-track-piece:start {
     background: transparent url('images/backgrounds/scrollbar.png') repeat-y !important;
