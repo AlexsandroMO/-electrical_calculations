@@ -68,6 +68,7 @@ def read_sql_filter_id(id_x):
 	
 	return read_db
 
+#---
 def read_sql_filter_name(id_x):
 	conn = sqlite3.connect('db.sqlite3')
 	sql_datas = f"""
