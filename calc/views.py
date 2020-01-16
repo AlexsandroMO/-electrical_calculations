@@ -41,23 +41,58 @@ def newCalc(request):
         form = CableCalculatorForm(request.POST)
 
         if form.is_valid():
-            #calc = form.save(commit=False)
+            calc = form.save(commit=False)
             #task.total_va = (task.potencia_va * task.quant)
             #--------------------------------------------------
             print('\n\n')
             print('Aqui....')
+            print(calc.instalation)
+            print(calc.isolation)
+            print(calc.number_polos)
+            print(calc.corrente_ckt)
             print('\n\n')
 
-            return redirect('home-calc')
+            result = (float(calc.number_polos) * float(calc.corrente_ckt))
+
+            return redirect('new-calc')
 
     else:
         form = CableCalculatorForm()
-        return render(request, 'calc/new-calc.html', {'form': form})
+        result = ''
+        return render(request, 'calc/new-calc.html', {'form': form, 'result': result})
 
+
+
+'''
+def newCalcResult(request, id):
+
+    if request.method == 'POST':
+        form = CableCalculatorForm(request.POST)
+
+        if form.is_valid():
+            calc = form.save(commit=False)
+            #task.total_va = (task.potencia_va * task.quant)
+            #--------------------------------------------------
+            print('\n\n')
+            print('Aqui....')
+            print(calc.instalation)
+            print(calc.isolation)
+            print(calc.number_polos)
+            print(calc.corrente_ckt)
+            print('\n\n')
+
+            result = (float(calc.number_polos) * float(calc.corrente_ckt))
+
+            return redirect('new-calc')
+
+    else:
+        form = CableCalculatorForm()
+        result = ''
+        return render(request, 'calc/new-calc.html', {'form': form, 'result': result})
 
 
 #Manual:
-'''
+
 def homecalc(request):
 
     if request.method == 'POST':
