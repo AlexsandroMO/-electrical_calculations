@@ -5,15 +5,28 @@
 
 {% block content %}
 
-<div class="offset-1 col-10 list-div">
-    <div>
+
+<div class="row" id="alinha-div-row">
+    <h3>Calcular Bitola de Cabo</h3>
+    <div id="alinha-itens">
         <form method="POST">
             {% csrf_token %}
             {{form|crispy}}
-            <input type="submit" class="btn btn-success" value="Calcular">
+            <input type="submit" class="btn btn-success" value="Calcular" id="bt-alinha">
         </form>
+        <br>
     </div>
+    <a href="{% url 'new-calc' %}"><button type="button" class="btn btn-outline-secondary" id="bt2-alinha">Limpar</button></a>
+    <br>
+    <h5 id="result">Bitola do Cabo: {{result}}</h5>
 </div>
 <br>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}

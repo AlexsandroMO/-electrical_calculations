@@ -366,10 +366,42 @@ table th{
 
 }
 
-#input-item{
-    position: absolute;
-    left: 200px;
+#alinha-div-row{
+    position: relative;
+    top: 20px;
+    left: 10px;
+    float: left;
 }
+
+#alinha-itens{
+    position: relative;
+    top: 60px;
+    left: -395px;
+}
+
+#bt-alinha{
+    position: relative;
+    top: -50px;
+    left: 665px;
+}
+
+#bt2-alinha{
+    text-align: center;
+    width: 80px;
+    height: 40px;
+    position: relative;
+    top: 10px;
+    left: -550px;
+}
+
+
+#result{
+    position: relative;
+    top: 150px;
+    right: 1020px;
+}
+
+
 
 /* 
 #id_instalation{
