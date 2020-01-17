@@ -36,6 +36,53 @@ def homecalc(request):
     return render(request, 'calc/homecalc.html')#, {'project': project})
 
 
+
+def newCalc(request):
+
+    if request.method == 'POST':
+        form = CableCalculatorForm(request.POST)
+
+        if form.is_valid():
+            calc = form.save(commit=False)
+            #task.total_va = (task.potencia_va * task.quant)
+            #--------------------------------------------------
+            print('\n\n')
+            print('Aqui....')
+            print(calc.instalation)
+            print(calc.isolation)
+            print(calc.number_polos)
+            print(calc.corrente_ckt)
+            print('\n\n')
+
+            calc_result = main.table_calc(float(calc.corrente_ckt), float(calc.number_polos))
+
+            #result = (float(calc.number_polos) * float(calc.corrente_ckt))
+            result = []
+            for a in calc_result['Cable']:
+                result.append(a)
+
+            texto_result = 'Bitola do Cabo: {} mm²'.format(result[0])
+
+            #form = CableCalculatorForm() 
+
+            print(texto_result)
+
+            return render(request, 'calc/new-calc.html', {'form': form, 'texto_result': texto_result})
+  
+    else:
+        form = CableCalculatorForm()
+        texto_result = 'Bitola do Cabo: '
+        return render(request, 'calc/new-calc.html', {'form': form, 'texto_result': texto_result})
+
+
+
+
+
+
+
+#=------------------------------------
+
+'''
 def newCalc(request):
 
     if request.method == 'POST':
@@ -55,7 +102,7 @@ def newCalc(request):
 
             result = (float(calc.number_polos) * float(calc.corrente_ckt))
 
-            result = (float(calc.number_polos) * float(calc.corrente_ckt))
+            #result = (float(calc.number_polos) * float(calc.corrente_ckt))
 
             form = CableCalculatorForm()
             
@@ -65,6 +112,11 @@ def newCalc(request):
         form = CableCalculatorForm()
         result = ''
         return render(request, 'calc/new-calc.html', {'form': form, 'result': result})
+'''
+
+
+#======================================
+
 
 
 
