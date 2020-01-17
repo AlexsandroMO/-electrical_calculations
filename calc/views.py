@@ -55,22 +55,16 @@ def newCalc(request):
 
             result = (float(calc.number_polos) * float(calc.corrente_ckt))
 
-            #return redirect(reverse('new-calc', kwargs={'result': result}))
+            result = (float(calc.number_polos) * float(calc.corrente_ckt))
 
             form = CableCalculatorForm()
             
             return render(request, 'calc/new-calc.html', {'form': form, 'result': result})
-            #return redirect('/')
-
-        
+  
     else:
         form = CableCalculatorForm()
         result = ''
         return render(request, 'calc/new-calc.html', {'form': form, 'result': result})
-
-
-
-
 
 
 
