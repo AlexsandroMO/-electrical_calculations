@@ -18,12 +18,14 @@ def homecalc(request):
         isola = form['isola']
         polo = form['polo']
         corr = form['corr']
+        tens = form['tens']
 
         print('\n\n')
         print(install)
         print(isola)
         print(polo)
         print(corr)
+        print(tens)
 
         print(type(install))
 
@@ -52,9 +54,20 @@ def newCalc(request):
             print(calc.isolation)
             print(calc.number_polos)
             print(calc.corrente_ckt)
+            print('hhh {}'.format(calc.tension))
             print('\n\n')
 
-            calc_result = main.table_calc(float(calc.corrente_ckt), float(calc.number_polos))
+            T = '{}'.format(calc.tension)
+
+            #-----------------
+            #tens = calc.tension
+            #test = main.read_sql_tension(tens)
+            #tension = test['type_tension'][0]
+
+            calc_result = main.table_calc(float(calc.corrente_ckt), float(T))
+
+            print('xxxxxxxxxxxxxxxxxxx')
+            #result = (float(calc.tension) * float(calc.corrente_ckt))
 
             #result = (float(calc.number_polos) * float(calc.corrente_ckt))
             result = []
@@ -63,7 +76,7 @@ def newCalc(request):
 
             texto_result = 'Bitola do Cabo: {} mm²'.format(result[0])
 
-            #form = CableCalculatorForm() 
+            #form = CableCalculatorForm()
 
             print(texto_result)
 

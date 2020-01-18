@@ -391,7 +391,7 @@ table th{
     height: 40px;
     position: relative;
     top: 10px;
-    left: -550px;
+    left: -330px;
 }
 
 
@@ -447,6 +447,12 @@ table th{
     left: 20px;
     float: right;
 }
+#div_id_tension{
+    position: relative;
+    left: 20px;
+    float: right;
+}
+
 
 
 

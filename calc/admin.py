@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import IsolatioType, InstalatioType, CableCalculator
+from .models import IsolatioType, InstalatioType, CableCalculator, Tension
 
 
 class ListaCableCalculator(admin.ModelAdmin):
@@ -10,4 +10,5 @@ class ListaCableCalculator(admin.ModelAdmin):
 admin.site.register(CableCalculator, ListaCableCalculator)
 admin.site.register(IsolatioType)
 admin.site.register(InstalatioType)
+admin.site.register(Tension)
 
