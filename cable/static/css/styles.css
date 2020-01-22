@@ -6,16 +6,15 @@
     margin: 0;
 }
 
-/*
-body{
 
+body{
     white-space: nowrap;
     overflow: hidden;
     overflow-x: hidden;
     overflow-y: hidden;
 
  }
-*/
+
 
  /* mobile phone */
 @media all and (max-width: 768px) {
@@ -53,6 +52,7 @@ body{
 h3{
     padding-top: 6px;
     padding-bottom: 20px;
+    margin-left: 20px;
  
 }
 
@@ -229,14 +229,14 @@ h3{
 /* Rodapé*/
 footer {
     background-color: #333;
-    height: 150px;
+    height: 130px;
     border-top: 2px solid #202020;
 }
 
 footer p {
     color: #f5f5f5;
     text-align: center;
-    top: 50%;
+    top: 40%;
     position: relative;
 }
 
@@ -353,7 +353,58 @@ table th{
     border: solid #ccc 1px;
 }
 
-#td-ajuste{
+
+/* .form-group{
+    float: right;
+    padding-right: 5px; 
+} */
+
+#div_id_instalation{
+    float: right;
+}
+
+#div_id_isolation{
+    float: right;
+}
+
+#div_id_number_polos{
+    float: right;
+}
+
+#div_id_number_polos{
+    float: right;
+}
+
+#div_id_corrente_ckt{
+    float: right;
+}
+
+#div_id_tension{
+    float: right;
+}
+
+#alinha-itens{
+    float: left;
+    margin: 5px;
+}
+
+#bt-alinha{
+    float: right;
+    margin: 5px;
+
+}
+
+#result{
+    margin-top: 35px;
+}
+
+
+
+
+
+
+/* --- Alinha Calc -- */
+/* #td-ajuste{
     width: 150px;
 }
 
@@ -365,13 +416,16 @@ table th{
     padding: 10px;
 
 }
+*/
 
+/*
 #alinha-div-row{
     position: relative;
     top: 20px;
     left: 10px;
     float: left;
 }
+
 
 #alinha-itens{
     position: relative;
@@ -394,20 +448,23 @@ table th{
     left: -330px;
 }
 
+*/
 
-#result{
-    position: relative;
+
+/* #result{
+    float: right;
+    /* position: relative;
     top: 150px;
-    right: 1100px;
-}
+    right: 1100px; */
+
+
 
 
 
 /* 
 #id_instalation{
-    width: 15%;
-    position: absolute;
-    left: 200px;
+    float: right;
+    padding-right: 5px; 
 }
 #id_isolation{
     width: 15%;
@@ -426,7 +483,7 @@ table th{
 } */
 
 
-
+/*
 #div_id_instalation{
     position: relative;
     left: 20px;
@@ -452,6 +509,11 @@ table th{
     left: 20px;
     float: right;
 }
+
+*/
+
+
+
 
 
 
