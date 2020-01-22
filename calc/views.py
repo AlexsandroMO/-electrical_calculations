@@ -20,7 +20,7 @@ def homecalc(request):
         corr = form['corr']
         tens = form['tens']
 
-        print('\n\n')
+        '''print('\n\n')
         print(install)
         print(isola)
         print(polo)
@@ -29,15 +29,13 @@ def homecalc(request):
 
         print(type(install))
 
-        print('\n\n')
+        print('\n\n')'''
 
         #if form.is_valid():
             #task = form.save(commit=False)
             #print('ok')
 
     return render(request, 'calc/homecalc.html')#, {'project': project})
-
-
 
 def newCalc(request):
 
@@ -48,33 +46,24 @@ def newCalc(request):
             calc = form.save(commit=False)
             #task.total_va = (task.potencia_va * task.quant)
             #--------------------------------------------------
-            print('\n\n')
+            '''print('\n\n')
             print('Aqui....')
             print(calc.instalation)
             print(calc.isolation)
             print(calc.number_polos)
             print(calc.corrente_ckt)
             print('hhh {}'.format(calc.tension))
-            print('\n\n')
+            print('\n\n')'''
 
             T = '{}'.format(calc.tension)
 
-            #-----------------
-            #tens = calc.tension
-            #test = main.read_sql_tension(tens)
-            #tension = test['type_tension'][0]
-
             calc_result = main.table_calc(float(calc.corrente_ckt), float(T))
 
-            print('xxxxxxxxxxxxxxxxxxx')
-            #result = (float(calc.tension) * float(calc.corrente_ckt))
-
-            #result = (float(calc.number_polos) * float(calc.corrente_ckt))
             result = []
             for a in calc_result['Cable']:
                 result.append(a)
 
-            texto_result = 'Bitola do Cabo: {} mm²'.format(result[0])
+            texto_result = '{} mm²'.format(result[0])
 
             #form = CableCalculatorForm()
 
@@ -84,7 +73,7 @@ def newCalc(request):
   
     else:
         form = CableCalculatorForm()
-        texto_result = 'Bitola do Cabo: '
+        texto_result = ''
         return render(request, 'calc/new-calc.html', {'form': form, 'texto_result': texto_result})
 
 

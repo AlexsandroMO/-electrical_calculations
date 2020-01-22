@@ -105,9 +105,10 @@ def table_calc(corrent, tension):
 	new = []
 	for a in range(len(tens)):
 		new.append([tens[a],queda[a],corr[a]])
+        
 
 	table = pd.DataFrame(data=new,columns=['Cable','Queda','Corrente'])
-	print('>>>>>>>>>>>>>>>>>>>>>> --', type(tension))
+	
 	result = corrent / tension
 	res = round(result + 0.5)
 
