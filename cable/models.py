@@ -54,13 +54,19 @@ class ResidencDimens(models.Model):
     total_va = models.DecimalField(verbose_name='Total (VA)', max_digits=8, decimal_places=2, blank=True)
     corrente_a = models.DecimalField(verbose_name='Corrente (A)', max_digits=8, decimal_places=2, blank=True)
     comprimento = models.DecimalField(verbose_name='Comprimento do Circuito (m)', max_digits=7, decimal_places=0)
-    sessao_condutor = models.ForeignKey(TabelaCondutor, verbose_name='Sessão Transversal do Condutor (mm²)', on_delete=models.CASCADE)
+    
+    #sessao_condutor = models.ForeignKey(TabelaCondutor, verbose_name='Sessão Transversal do Condutor (mm²)', blank=True, on_delete=models.CASCADE)
+    sessao_condutor = models.CharField(verbose_name='Sessão Transversal do Condutor (mm²)', max_length=4, blank=True)
+
     queda_tensao_ckt = models.DecimalField(verbose_name='Queda de Tensão do Circuito (%)', max_digits=2, decimal_places=2, blank=True)
     queda_tensao_perm = models.DecimalField(verbose_name='Queda de Tensão Permitida (%)', max_digits=4, decimal_places=2)
     queda_tensao_test = models.CharField(verbose_name='Queda de Tensão', max_length=3, blank=True)
     capacidade_corrente = models.CharField(verbose_name='Capacidade de Corrente', max_length=3, blank=True)
     numero_polos = models.DecimalField(verbose_name='Número de Polos', max_digits=4, decimal_places=0)
-    corrente_nominal = models.ForeignKey(Disjuntor, verbose_name='Corrente Nominal', on_delete=models.CASCADE)
+
+    #corrente_nominal = models.ForeignKey(Disjuntor, verbose_name='Corrente Nominal', blank=True, on_delete=models.CASCADE)
+    corrente_nominal = models.CharField(verbose_name='Corrente Nominal', max_length=4, blank=True)
+
     verifica_dj = models.CharField(verbose_name='Verifica Disjuntor', max_length=3, blank=True)
     update_resid = models.DateTimeField(auto_now=True)
 

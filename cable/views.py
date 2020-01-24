@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import ResidencDimens
 from .models import Project
+from .models import TabelaCondutor
 from .forms import ResidencDimensForm
 from .forms import ProjectForm
 from django.contrib import messages
@@ -40,27 +41,18 @@ def newTask(request):
     if request.method == 'POST':
         form = ResidencDimensForm(request.POST)
 
+        task = form.save(commit=False)
+
         if form.is_valid():
+
             task = form.save(commit=False)
             task.total_va = (task.potencia_va * task.quant)
             #--------------------------------------------------
- 
             t_va = float(task.total_va)
-
             task.corrente_a = (float(task.total_va) / t_va)
             #--------------------------------------------------
-            queda = task.sessao_condutor
-            test = main.read_sql_queda(queda)
-            queda_tensao = test['queda_tesao'][0]
-
-            calc = ((((float(queda_tensao) * float(task.corrente_a)) * float(task.comprimento)) / (1000) / t_va))
-
-            task.queda_tensao_ckt = calc * 100
-            
-            if (float(task.queda_tensao_perm) / 100)< task.queda_tensao_ckt:
-                task.queda_tensao_test = 'OK'
-            else:
-                task.queda_tensao_test = 'NÃO'
+            cable = main.table_tens(float(task.total_va), task.tensa_va)
+            task.sessao_condutor = cable
             #--------------------------------------------------
             corr = task.sessao_condutor
             test = main.read_sql_corr(corr)
@@ -70,8 +62,14 @@ def newTask(request):
                 task.capacidade_corrente = 'OK'
             else:
                 task.capacidade_corrente = 'NÀO'
+
             #--------------------------------------------------
-            dj = task.corrente_nominal
+            disj = main.table_disj(t_va, task.tensa_va)
+            task.corrente_nominal = disj
+
+            cor_nom = int(task.corrente_nominal)
+            #--------------------------------------------------
+            dj = cor_nom
             test = main.read_sql_dj(dj)
             djj = int(test['dj'][0])
 
@@ -84,6 +82,19 @@ def newTask(request):
             id_x = task.projeto
             test = main.read_sql_filter_id(id_x)
             id_project = int(test['id'][0])
+            #---------------------------------------------------
+            queda = task.sessao_condutor
+            test = main.read_sql_queda(queda)
+            queda_tensao = test['queda_tesao'][0]
+
+            calc = ((((float(queda_tensao) * float(task.corrente_a)) * float(task.comprimento)) / (1000) / t_va))
+
+            task.queda_tensao_ckt = calc * 100
+            
+            if (float(task.queda_tensao_perm) / 100)< task.queda_tensao_ckt:
+                task.queda_tensao_test = 'OK'
+            else:
+                task.queda_tensao_test = 'NÃO'
             #--------------------------------------------------
 
             task.save()

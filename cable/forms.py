@@ -7,9 +7,7 @@ class ResidencDimensForm(forms.ModelForm):
     class Meta:
         model = ResidencDimens
         fields = ('projeto','local','tipo','tensa_va','quant','potencia_va','comprimento',
-                    'sessao_condutor','queda_tensao_perm',
-                    'numero_polos','corrente_nominal')
-
+                'queda_tensao_perm','numero_polos')
 
 class ProjectForm(forms.ModelForm):
     class Meta:

@@ -9,9 +9,12 @@
 
 body{
     white-space: nowrap;
-    overflow: hidden;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow: visible;
+    overflow-x: scroll;
+    overflow-y: scroll; */
+
+
+    /* overflow-y: hidden; */
 
  }
 
@@ -53,8 +56,8 @@ h3{
     padding-top: 6px;
     padding-bottom: 20px;
     margin-left: 20px;
- 
 }
+
 
 /*botão adicionar*/
 
@@ -331,7 +334,6 @@ ul.messages li{
     margin-right: 20px;
 }
 
-
 table td {
     color: #aaa;
     background-color: white;
@@ -352,12 +354,6 @@ table th{
     font-size: 16px;
     border: solid #ccc 1px;
 }
-
-
-/* .form-group{
-    float: right;
-    padding-right: 5px; 
-} */
 
 #div_id_instalation{
     float: right;
@@ -391,15 +387,16 @@ table th{
 #bt-alinha{
     float: right;
     margin: 5px;
-
 }
 
 #result{
     margin-top: 35px;
 }
 
-
-
+h5{
+    position: relative;
+    top: 3px;
+}
 
 
 
