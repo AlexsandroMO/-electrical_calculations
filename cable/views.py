@@ -24,15 +24,17 @@ def home(request):
 @login_required
 def taskList(request, id):
 
+    project_name = Project.objects.all()
+
     read_project = get_object_or_404(Project, pk=id)
 
-    project = main.read_sql_filter(id)
-    name_project = project['project'][0]
+    #project = main.read_sql_filter(id)
+    #name_project = project['project'][0]
     
     task = ResidencDimens.objects.filter(projeto_id=read_project).order_by('-local')
     project = Project.objects.all()
 
-    return render(request, 'cable/lista-circuitos.html', {'task': task, 'name_project': name_project})
+    return render(request, 'cable/lista-circuitos.html', {'task': task, 'project_name': project_name})
 
 
 @login_required
