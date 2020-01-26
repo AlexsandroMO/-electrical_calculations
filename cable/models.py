@@ -52,7 +52,9 @@ class ResidencDimens(models.Model):
     quant = models.DecimalField(verbose_name='Quantidade', max_digits=3, decimal_places=0)
     potencia_va = models.DecimalField(verbose_name='Potência (VA)', max_digits=7, decimal_places=2)
     total_va = models.DecimalField(verbose_name='Total (VA)', max_digits=8, decimal_places=2, blank=True)
-    corrente_a = models.DecimalField(verbose_name='Corrente (A)', max_digits=8, decimal_places=2, blank=True)
+    #corrente_a = models.DecimalField(verbose_name='Corrente (A)', max_digits=8, decimal_places=2, blank=True)
+    corrente_a = models.FloatField(verbose_name='Corrente (A)', blank=True)
+    
     comprimento = models.DecimalField(verbose_name='Comprimento do Circuito (m)', max_digits=7, decimal_places=0)
     
     #sessao_condutor = models.ForeignKey(TabelaCondutor, verbose_name='Sessão Transversal do Condutor (mm²)', blank=True, on_delete=models.CASCADE)

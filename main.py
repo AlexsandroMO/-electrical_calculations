@@ -192,7 +192,9 @@ def table_tens(p_va, tension):
 		return a
 		#new.append(a)
 
-def table_disj(p_va, tens):
+def table_disj(power, tens):
+
+	#print('>>>>>>>>>>>>>>>>>>>>>',corr, tens)
 
 	corr = [8,15,18,23,30,38,48,60,68,78,98,123,148,178,228]
 	dj = [10,16,20,25,32,40,50,63,70,80,100,125,150,180,200,230]
@@ -205,7 +207,9 @@ def table_disj(p_va, tens):
 	
 	xx = str(tens)
 
-	result = p_va / int(xx)
+	
+
+	result = power / int(xx)
 	res = round(result + 0.5)
 
 	new2 = []
