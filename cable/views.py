@@ -51,11 +51,16 @@ def newTask(request):
             t_va = float(task.total_va)
             task.corrente_a = (float(task.total_va) / t_va)
             #--------------------------------------------------
-            cable = main.table_tens(float(task.total_va), task.tensa_va)
+            #cable = main.table_tens(float(task.total_va), task.tensa_va)
+            cable = main.calc_cable(str(task.comprimento), task.corrente_a)
             task.sessao_condutor = cable
+
+            print(task.sessao_condutor)
             #--------------------------------------------------
             corr = task.sessao_condutor
             test = main.read_sql_corr(corr)
+            print('<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' ,type(test), '*******',test)
+
             corrente = test['capacidade_conducao'][0]
 
             if corrente > float(task.corrente_a):
