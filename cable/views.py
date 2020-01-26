@@ -24,15 +24,17 @@ def home(request):
 @login_required
 def taskList(request, id):
 
+    project_name = Project.objects.all()
+
     read_project = get_object_or_404(Project, pk=id)
 
-    project = main.read_sql_filter(id)
-    name_project = project['project'][0]
+    #project = main.read_sql_filter(id)
+    #name_project = project['project'][0]
     
     task = ResidencDimens.objects.filter(projeto_id=read_project).order_by('-local')
     project = Project.objects.all()
 
-    return render(request, 'cable/lista-circuitos.html', {'task': task, 'name_project': name_project})
+    return render(request, 'cable/lista-circuitos.html', {'task': task, 'project_name': project_name})
 
 
 @login_required
@@ -48,18 +50,20 @@ def newTask(request):
             task = form.save(commit=False)
             task.total_va = (task.potencia_va * task.quant)
             #--------------------------------------------------
+            #Dimensiona total de VA
             t_va = float(task.total_va)
             task.corrente_a = (float(task.total_va) / t_va)
             #--------------------------------------------------
+            #Calcula bitola do cabo
             #cable = main.table_tens(float(task.total_va), task.tensa_va)
             cable = main.calc_cable(str(task.comprimento), task.corrente_a)
             task.sessao_condutor = cable
 
             print(task.sessao_condutor)
             #--------------------------------------------------
+            #Verifica capaciadde de Corrente
             corr = task.sessao_condutor
             test = main.read_sql_corr(corr)
-            print('<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' ,type(test), '*******',test)
 
             corrente = test['capacidade_conducao'][0]
 
@@ -69,6 +73,7 @@ def newTask(request):
                 task.capacidade_corrente = 'NÀO'
 
             #--------------------------------------------------
+            #Dimensiona Disjuntos
             disj = main.table_disj(t_va, task.tensa_va)
             task.corrente_nominal = disj
 
@@ -88,6 +93,7 @@ def newTask(request):
             test = main.read_sql_filter_id(id_x)
             id_project = int(test['id'][0])
             #---------------------------------------------------
+            #Verifica Queda de tensão
             queda = task.sessao_condutor
             test = main.read_sql_queda(queda)
             queda_tensao = test['queda_tesao'][0]

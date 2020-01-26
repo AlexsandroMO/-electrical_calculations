@@ -42,7 +42,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Circuitos</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    {% for item in project %}
+                    {% for item in project_name %}
                     <a class="dropdown-item" href="{% url 'task-list' item.id %}">Projeto {{item.project}}</a>
                     {% endfor %}
                 </div>
